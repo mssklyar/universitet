@@ -4,13 +4,13 @@ node_modules
 *.iml
 
 ## Directory-based project format:
-.idea/
+**/.idea/
 # if you remove the above rule, at least ignore the following:
 
 # User-specific stuff:
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/dictionaries
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+**/.idea/dictionaries
 
 # Sensitive or high-churn files:
 # .idea/dataSources.ids
@@ -33,10 +33,10 @@ node_modules
 ## Plugin-specific files:
 
 # IntelliJ
-out/
+**/out/
 
 # mpeltonen/sbt-idea plugin
-.idea_modules/
+**/.idea_modules/
 
 # JIRA plugin
 atlassian-ide-plugin.xml
