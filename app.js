@@ -10,6 +10,7 @@ var http = require('http');
 var mongoose = require('mongoose');
 
 // My comments
+// хуй мусорам
 
 var app = express();
 
