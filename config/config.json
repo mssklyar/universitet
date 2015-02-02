@@ -1,0 +1,22 @@
+{
+    "port": 3000,
+    "mongoose": {
+        "uri": "mongodb://localhost/myapp",
+        "options": {
+            "server": {
+                "socket": {
+                    "keepAlive": 1
+                }
+            }
+        }
+    },
+    "session": {
+        "secret": "OrangeTree",
+        "key": "sid",
+        "cookie": {
+            "path": "/",
+            "httpOnly": true,
+            "maxAge": null
+        }
+    }
+}
