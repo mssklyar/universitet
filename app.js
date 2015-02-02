@@ -10,7 +10,6 @@ var http = require('http');
 var mongoose = require('mongoose');
 
 // My comments
-// My comments 2
 
 var app = express();
 
