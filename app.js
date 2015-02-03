@@ -8,6 +8,8 @@ var config = require('config');
 var log = require('libs/log')(module);
 var http = require('http');
 var mongoose = require('mongoose');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 // My comments
 // хуй мусорам
@@ -34,14 +36,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 
-var MongoStore = require('connect-mongo')(express);
+//var
 
 app.use(session({
     secret: config.get('session:secret'),
+    resave: false,
+    saveUninitialized: true,
     key: config.get('session:key'),
     cookie: config.get('session:cookie'),
-    store: new MongoStore({mongoose_connection: mongoose.connection})
+    store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 var user = require('models/user').User;
