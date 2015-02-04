@@ -1,5 +1,6 @@
 var mongoose = require('libs/mongoose'),
     Schema = mongoose.Schema;
+var subject = require('models/subject').Subject;
 
 var schema = new Schema({
     name: {
@@ -11,10 +12,8 @@ var schema = new Schema({
         type: Date,
         default: Date.now
     },
-    univer: {
-        type: Id
-    }
+    subjects: [{ type: Schema.Types.ObjectId, ref: 'subject' }]
 
 });
 
-exports.Subject = mongoose.model('Subject', schema);
+exports.Faculty = mongoose.model('Faculty', schema);
