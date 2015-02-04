@@ -39,8 +39,7 @@ app.use(session({
 //Статика
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Подключаем роутеры
-var routes = require('routes');
+require('routes')(app);
 
 /// Ловим ошибку 404 и передаём ему нашему обработчику ниже
 app.use(function(req, res, next) {
