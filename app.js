@@ -19,10 +19,6 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-//Роутеры
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
 //Всякие миддлвэры из дерьма, которые подключали
 app.use(favicon()); //иконка
 app.use(logger('dev')); //логгер, выводит в консольку нам всё
@@ -43,20 +39,8 @@ app.use(session({
 //Статика
 app.use(express.static(path.join(__dirname, 'public')));
 
-//-------------------------------------------//
-//Это дерьмо можно убрать
-var user = require('models/user').User;
-
-app.get('/users', function(req, res, next){
-    user.find({}, function(err, users){
-        if (err) return next(err);
-        res.json(users);
-    })
-})
-
-app.use('/', routes);
-//app.use('/users', users);
-//-------------------------------------------//
+//Подключаем роутеры
+var routes = require('routes');
 
 /// Ловим ошибку 404 и передаём ему нашему обработчику ниже
 app.use(function(req, res, next) {
