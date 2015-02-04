@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var user = require('models/user').User;
+var User = require('models/user').User;
+//var mongoose = require('libs/mongoose');
 
-router.get('/users', function(req, res, next) {
 
-    user.find({}, function(err, users){
+router.get('/', function(req, res, next) {
+    User.find({}, function(err, data){
         if (err) return next(err);
-        res.json(users);
+        res.json(data);
     })
 });
 
