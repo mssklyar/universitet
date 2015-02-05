@@ -2,8 +2,8 @@ extends layout
 block content
     h1= title
     ul
-    each val, index in dat
-        li= index + ') ' + val.name
+        each val, index in dat
+            li= index + ') ' + val.name
     form(method='post', action='/univer')
         p
             b Добавить университет

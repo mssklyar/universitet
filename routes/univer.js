@@ -4,29 +4,26 @@ var Univer = require('models/univer').Univer;
 var bodyParser = require('body-parser');
 
 router.get('/', function(req, res, next) {
-    Univer.find({}, function(err, data){
-        if (err) return next(err);
-        res.render('univer', { title: 'Univer', dat: data });
+    Univer.findUniver(function(err, result) {
+        if (err) throw err;
+        res.render('univer', { title: 'Univer', dat: result });
     });
 });
 
 router.post('/', function(req, res, next) {
-    if (!req.body) {res.sendStatus(400)
-    }else{
-
-        Univer.findOne({name: req.body.nameofUniver.toUpperCase()}, function(err, data){
-            if (err) return next(err);
-            if (data){
+    if (!req.body) {
+        res.sendStatus(400);                                                    //Если нет ланных с формы, то нихуя и статус 400
+    } else {
+        Univer.findDupUniver(req.body.nameofUniver, function (err, result) {    //Метода проверяет есть ли уже такой универ в бд
+            if (err) throw err;
+            if (result) {
                 res.send("Такой универ уже есть!");
-            }else{
-
-                var univer = new Univer({name: req.body.nameofUniver.toUpperCase()});
-                univer.save(function(err){
-                    if (err) return next(err);
+            } else {
+                Univer.saveNewUniver(req.body.nameofUniver, function (err) {    //Метода пишет, но зависает потом, хз поч
+                    if (err) throw err;
                     res.send(req.body.nameofUniver + " добавлен!");
                 });
             }
-
         });
     }
 });
