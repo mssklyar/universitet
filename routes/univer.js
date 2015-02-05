@@ -16,7 +16,20 @@ router.post('/', function(req, res, next) {
     });*/
     if (!req.body) {res.sendStatus(400)
     }else{
-        res.end(req.body.nameofUniver);
+
+        Univer.findOne({name: req.body.nameofUniver}, function(err, data){
+            if (err) return next(err);
+            if (data){
+                res.send("Такой универ уже есть!");
+            }else{
+                var univer = new Univer({name: req.body.nameofUniver});
+                univer.save(function(err){
+                    if (err) return next(err);
+                    res.send(req.body.nameofUniver + " добавлен!");
+                });
+            }
+
+        });
     }
 });
 
