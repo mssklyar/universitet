@@ -1,7 +1,7 @@
 extends layout
 block content
     h1= title
-    p= nameOfFields
+    p(id='hid')= st
     ul
         each val, index in data
             li= index + ') ' + val.name
@@ -13,12 +13,13 @@ block content
                     p= nameOfFields[x]
                     input(type='text', size='40', name= "#{nameOfFields[x]}" + 'OfUniver')
                     br
-            p Факультеты
-                - for (var x = schemOfFaculty.length-1; x >= 0; x--)
-                    p= nameOfFields[x]
-                    input(type='text', size='40', name= "#{schemOfFaculty[x]}" + 'OfFaculty')
-                    br
-            input(type='button', value='ЕЩЕ ФАКУЛЬТЕТОВ')
+            div(id="items")
+                p Факультет1:
+                    - for (var x = schemOfFaculty.length-1; x >= 0; x--)
+                        //str = schemOfFaculty[x]+' '}
+                        p(id='it'+x)= schemOfFaculty[x]
+                        input(type='text', size='40', name= "#{schemOfFaculty[x]}" + 'OfFaculty')
+                input(type='button', id="add", value='ЕЩЕ ФАКУЛЬТЕТОВ', onclick="Click()")
 
             p
                 input(type='submit', value='Отправить')

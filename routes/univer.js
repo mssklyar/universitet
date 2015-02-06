@@ -7,11 +7,23 @@ var bodyParser = require('body-parser');
 router.get('/', function(req, res, next) {
     Univer.findUniver(function(err, result) {
         if (err) throw err;
+
+        //ПОТОМ В МОДЕЛЬ ЗАСУНУТЬ!
+        //--------------------------------------------
+        var arr = Faculty.schema.requiredPaths();
+        var str = '';
+        for (var x = arr.length - 1; x >= 0 ; x--){
+            str+= arr[x] + ' ';
+        };
+        //---------------------------------------------
+
         res.render('univer', {
             title: 'Повар, спрашивает повара',
             nameOfFields: Univer.schema.requiredPaths(),
             schemOfFaculty: Faculty.schema.requiredPaths(),
-            data: result});
+            data: result,
+            st: str
+        });
     });
 });
 

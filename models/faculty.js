@@ -8,6 +8,11 @@ var schema = new Schema({
         unique: true,
         required: true
     },
+    fuck: {
+        type: String,
+        unique: false,
+        required: true
+    },
     created: {
         type: Date,
         default: Date.now
