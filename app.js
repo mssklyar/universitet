@@ -11,6 +11,7 @@ var http = require('http'); //Дерьмо отвечает за соедине�
 var mongoose = require('mongoose'); //Дерьмо отвечает за БД
 var session = require('express-session'); //Дерьмо отвечает за сессии
 var MongoStore = require('connect-mongo')(session); //Дерьмо, которое нужно чтобы соединяться с БД для сессий
+var HttpError = require('error').HttpError;
 
 //Дерьмо
 var app = express();
@@ -35,8 +36,28 @@ app.use(session({ //Сессичные
 }));
 app.use(express.static(path.join(__dirname, 'public'))); //Статика
 
+app.use(require('middleware/sendHttpError'));
+//app.use(require('middleware/loadUser'));
+
 require('routes')(app);
-require('error')(app);
+
+app.use(function(err, req, res, next) {
+    if (typeof err == 'number') { // next(404);
+        err = new HttpError(err);
+    }
+
+    if (err instanceof HttpError) {
+        res.sendHttpError(err);
+    } else {
+        if (app.get('env') == 'development') {
+            express.errorHandler()(err, req, res, next);
+        } else {
+            log.error(err);
+            err = new HttpError(500);
+            res.sendHttpError(err);
+        }
+    }
+});
 
 //Серверное дерьмо
 http.createServer(app).listen(config.get('port'), function(){

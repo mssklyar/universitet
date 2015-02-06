@@ -1,4 +1,4 @@
-extends layout
+extends layout/layout
 
 block content
     form.form-horizontal.login-form(name='login-form')
@@ -12,7 +12,7 @@ block content
                     input#input-password.form-control(name='password', value='pass', type='password', placeholder='Пароль')
             .form-group
                 .col-lg-offset-2.col-lg-10
-                    button.btn.btn-primary(type='submit', data-loading-text='Отправляется') Go
+                    button.btn.btn-primary(type='submit', data-loading-text='Отправляется') Войти
                     span.help-block.error
         script.
             $(document.forms['login-form']).on('submit', function() {
