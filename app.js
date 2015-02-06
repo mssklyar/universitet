@@ -25,9 +25,7 @@ app.use(logger('dev')); //логгер, выводит в консольку н�
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser()); //Парсит нам кукишки
-
-//Сессичные
-app.use(session({
+app.use(session({ //Сессичные
     secret: config.get('session:secret'),
     resave: false,
     saveUninitialized: true,
@@ -35,42 +33,10 @@ app.use(session({
     cookie: config.get('session:cookie'),
     store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
-
-//Статика
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); //Статика
 
 require('routes')(app);
-
-/// Ловим ошибку 404 и передаём ему нашему обработчику ниже
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
-/// error handlers
-
-// Обработчик ошибок в режиме разработки
-// напечатает stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-// Обычный обработчик ошибок
-// без stacktrace для юзеров
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
+require('error')(app);
 
 //Серверное дерьмо
 http.createServer(app).listen(config.get('port'), function(){
