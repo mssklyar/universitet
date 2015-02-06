@@ -19,7 +19,8 @@ router.post('/', function(req, res, next) {
             if (result) {
                 res.send("Такой универ уже есть!");
             } else {
-                Univer.saveNewUniver(req.body.nameofUniver, function (err) {    //Метода пишет, но зависает потом, хз поч
+                var go  = new Univer({name: req.body.nameofUniver.toUpperCase()});
+                go.save(function (err) {
                     if (err) throw err;
                     res.send(req.body.nameofUniver + " добавлен!");
                 });
