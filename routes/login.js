@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('models/user').User;
-var User = require('models/user').AuthError;
+var AuthError = require('models/user').AuthError;
 
 router.get('/', function(req, res, next) {
     res.render('login', { title: 'Вход' });
@@ -18,6 +18,9 @@ router.post('/', function(req, res, next) {
             } else {
                 return next(err);
             }
+        } else
+        {
+            res.statusCode = 200;
         }
     })
 });

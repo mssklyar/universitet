@@ -43,10 +43,11 @@ schema.methods.checkPassword = function(password) {
 };
 
 schema.statics.authorize = function(username, password, callback){
-    var user = this;
+    var User = this;
     async.waterfall([
         function(callback){
             User.findOne({username: username}, callback);
+
         },
         function(user, callback){
             if (user){
