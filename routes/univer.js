@@ -1,12 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var Univer = require('models/univer').Univer;
+var Faculty = require('models/faculty').Faculty;
 var bodyParser = require('body-parser');
 
 router.get('/', function(req, res, next) {
     Univer.findUniver(function(err, result) {
         if (err) throw err;
-        res.render('univer', { title: 'Univer', dat: result });
+        res.render('univer', {
+            title: 'Повар, спрашивает повара',
+            nameOfFields: Univer.schema.requiredPaths(),
+            schemOfFaculty: Faculty.schema.requiredPaths(),
+            data: result});
     });
 });
 

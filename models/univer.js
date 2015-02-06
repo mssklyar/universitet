@@ -23,5 +23,10 @@ schema.statics.findDupUniver = function(nameofUniver, data) {
     this.findOne({name: nameofUniver.toUpperCase()}, data);
 };
 
+/*
+schema.statics.schemaToArray = function() {
+   return this.requiredPaths;
+};
+*/
 
 exports.Univer = mongoose.model('Univer', schema);

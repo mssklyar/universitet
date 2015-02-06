@@ -1,15 +1,24 @@
 extends layout
 block content
     h1= title
+    p= nameOfFields
     ul
-        each val, index in dat
+        each val, index in data
             li= index + ') ' + val.name
     form(method='post', action='/univer')
         p
             b Добавить университет
-            p
-                | Название:
-                input(type='text', size='40', name='nameofUniver')
-                br
+            p Универ
+                - for (var x = nameOfFields.length-1; x >= 0; x--)
+                    p= nameOfFields[x]
+                    input(type='text', size='40', name= "#{nameOfFields[x]}" + 'OfUniver')
+                    br
+            p Факультеты
+                - for (var x = schemOfFaculty.length-1; x >= 0; x--)
+                    p= nameOfFields[x]
+                    input(type='text', size='40', name= "#{schemOfFaculty[x]}" + 'OfFaculty')
+                    br
+            input(type='button', value='ЕЩЕ ФАКУЛЬТЕТОВ')
+
             p
                 input(type='submit', value='Отправить')
