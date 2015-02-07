@@ -35,58 +35,11 @@ app.use(session({ //Сессичные
 }));
 app.use(express.static(path.join(__dirname, 'public'))); //Статика
 
-
 //app.use(require('middleware/loadUser'));
 app.use(require('middleware/sendHttpError'));
 require('routes')(app);
+require('middleware/errorHandler')(app);
 
-/// Ловим ошибку 404 и передаём ему нашему обработчику ниже
-
-
-require('error')(app);
-/*
-/// error handlers
-// Обработчик ошибок в режиме разработки
-// напечатает stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-// Обычный обработчик ошибок
-// без stacktrace для юзеров
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
-*/
-/*
-app.use(function(err, req, res, next) {
-    if (typeof err == 'number') { // next(404);
-        err = new HttpError(err);
-    }
-
-    if (err instanceof HttpError) {
-        res.sendHttpError(err);
-    } else {
-        if (app.get('env') == 'development') {
-            errorhandler()(err, req, res, next);
-        } else {
-            log.error(err);
-            err = new HttpError(500);
-            res.sendHttpError(err);
-        }
-    }
-});
-*/
 //Серверное дерьмо
 http.createServer(app).listen(config.get('port'), function(){
     log.info('Express server listening on port ' + config.get('port'));

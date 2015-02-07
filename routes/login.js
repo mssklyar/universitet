@@ -1,15 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var User = require('models/user').User;
-
+var AuthError = require('models/user').AuthError;
+var HttpError = require('error/HttpError').HttpError;
 
 router.get('/', function(req, res, next) {
     res.render('login', { title: 'Вход' });
 });
 
 router.post('/', function(req, res, next) {
-    var AuthError = require('models/user').AuthError;
-    var HttpError = require('error').HttpError;
+
     var username = req.body.username;
     var password = req.body.password;
 
