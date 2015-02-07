@@ -70,7 +70,6 @@ schema.statics.authorize = function(username, password, callback){
 function AuthError(message) {
     Error.apply(this, arguments);
     Error.captureStackTrace(this, AuthError);
-
     this.message = message;
 }
 

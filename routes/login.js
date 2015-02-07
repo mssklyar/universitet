@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('models/user').User;
 var AuthError = require('models/user').AuthError;
+var HttpError = require('error').HttpError;
 
 router.get('/', function(req, res, next) {
     res.render('login', { title: 'Вход' });
@@ -18,10 +19,9 @@ router.post('/', function(req, res, next) {
             } else {
                 return next(err);
             }
-        } else
-        {
-            res.statusCode = 200;
         }
+        req.session.user = user._id;
+        res.send();
     })
 });
 
