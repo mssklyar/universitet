@@ -20,7 +20,7 @@ schema.statics.findUniver = function(data) {
 };
 
 schema.statics.findDupUniver = function(nameofUniver, data) {
-    this.findOne({name: nameofUniver.toUpperCase()}, data);
+    this.findOne({name: nameofUniver.toUpperCase}, data);
 };
 
 /*
