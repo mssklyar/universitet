@@ -21,4 +21,10 @@ var schema = new Schema({
 
 });
 
+schema.statics.findDupFaculty = function(nameofFaculty, data) {
+    this.findOne({name: nameofFaculty.toUpperCase()}, data);
+};
+
+
+
 exports.Faculty = mongoose.model('Faculty', schema);

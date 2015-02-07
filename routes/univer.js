@@ -31,16 +31,22 @@ router.post('/', function(req, res, next) {
     if (!req.body) {
         res.sendStatus(400);                                                    //Если нет ланных с формы, то нихуя и статус 400
     } else {
+        var counter = 0;
+        for (var key in req.body) {counter++;}
+
         Univer.findDupUniver(req.body.nameofUniver, function (err, result) {    //Метода проверяет есть ли уже такой универ в бд
             if (err) throw err;
             if (result) {
                 res.send("Такой универ уже есть!");
             } else {
-                var go  = new Univer({name: req.body.nameofUniver.toUpperCase()});
+                ;
+
+
+/*                var go  = new Univer({name: req.body.nameofUniver.toUpperCase()});
                 go.save(function (err) {
                     if (err) throw err;
                     res.send(req.body.nameofUniver + " добавлен!");
-                });
+                });*/
             }
         });
     }

@@ -11,7 +11,7 @@ function Click() {
 
     for ( var x = 0 ; x < arr.length-1 ;x++) {
         newitem += arr[x] + "<br>";
-        newitem += "<input type=\"text\" name=" + arr[x] + items + "\" size=\"40\"><br>";
+        newitem += "<input type=\"text\" name=" + arr[x] + 'OfFaculty' + items + " size=\"40\"><br>";
     }
 
     newnode = document.createElement("span");
