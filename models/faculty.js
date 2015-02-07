@@ -1,6 +1,7 @@
 var mongoose = require('libs/mongoose'),
     Schema = mongoose.Schema;
 var subject = require('models/subject').Subject;
+var bodyParser = require('body-parser');
 
 var schema = new Schema({
     name: {
@@ -22,7 +23,13 @@ var schema = new Schema({
 });
 
 schema.statics.findDupFaculty = function(nameofFaculty, data) {
-    this.findOne({name: nameofFaculty.toUpperCase()}, data);
+    var counter = 0;
+    for (var key in nameofFaculty) {counter++;}
+    for(var x = 1; x <= counter ; x++){
+        this.findOne({name: nameofFaculty["nameOfFaculty" + toString(x)] }, data);
+        if(!data){break;}
+    }
+
 };
 
 

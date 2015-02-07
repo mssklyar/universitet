@@ -19,8 +19,8 @@ schema.statics.findUniver = function(data) {
     this.find({}, data);
 };
 
-schema.statics.findDupUniver = function(nameofUniver, data) {
-    this.findOne({name: nameofUniver.toUpperCase}, data);
+schema.statics.findDupUniver = function(nameOfUniver, data) {
+    this.findOne({name: nameOfUniver.toUpperCase()}, data);
 };
 
 /*

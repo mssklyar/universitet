@@ -19,3 +19,8 @@ function Click() {
     newnode.innerHTML=newitem;
     div.insertBefore(newnode,button);
 }
+
+function validForm(f) {
+    d = f.nameOfUniver.value;
+    alert(f);
+}

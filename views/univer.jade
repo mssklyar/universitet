@@ -7,7 +7,7 @@ block content
             li= index + ') ' + val.name
     form
         form
-    form(method='post', action='/univer', name='qwe')
+    form(method='post', action='/univer', onSubmit="validForm(this)")
         p
             b Добавить университет
             p Универ
