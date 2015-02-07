@@ -11,7 +11,6 @@ var http = require('http'); //Дерьмо отвечает за соедине�
 var mongoose = require('mongoose'); //Дерьмо отвечает за БД
 var session = require('express-session'); //Дерьмо отвечает за сессии
 var MongoStore = require('connect-mongo')(session); //Дерьмо, которое нужно чтобы соединяться с БД для сессий
-var HttpError = require('error').HttpError;
 
 //Дерьмо
 var app = express();

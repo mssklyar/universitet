@@ -14,10 +14,10 @@ HttpError.prototype.name = 'HttpError';
 exports.HttpError = HttpError;
 
 module.exports = function(app){
-    app.use(function(req, res, next) {
+   /* app.use(function(req, res, next) {
         var err = new HttpError(404);
         next(err);
-    });
+    });*/
     app.use(function(err, req, res, next) {
         console.log(err);
         if (typeof err == 'number') { // next(404);
