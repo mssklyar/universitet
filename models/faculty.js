@@ -1,7 +1,6 @@
 var mongoose = require('libs/mongoose'),
     Schema = mongoose.Schema;
 var subject = require('models/subject').Subject;
-var bodyParser = require('body-parser');
 
 var schema = new Schema({
     name: {
@@ -22,14 +21,29 @@ var schema = new Schema({
 
 });
 
-schema.statics.findDupFaculty = function(nameofFaculty, data) {
+schema.statics.findDupFacultyAndSaveAndGetId = function(ofFaculty, un, data) {
     var counter = 0;
-    for (var key in nameofFaculty) {counter++;}
-    for(var x = 1; x <= counter ; x++){
-        this.findOne({name: nameofFaculty["nameOfFaculty" + toString(x)] }, data);
-        if(!data){break;}
-    }
+    var gor;
+    for (var key in ofFaculty) {counter++;}
+    for(var x = 1; x <= ((counter - un)/this.schema.requiredPaths().length) ; x++){
+        data = null;
+        console.log(ofFaculty["nameOfFaculty" + x]);
+        this.findOne({name: ofFaculty["nameOfFaculty" + x] }, data);
+        if(data){
+            console.log(data);
+            break;
+        }else{
+            console.log(data);
+            new this({
+                name: ofFaculty["nameOfFaculty"+x],
+                fuck: ofFaculty["fuckOfFaculty"+x]
+            }).save(function (err) {
+                if (err) throw err;
+                //this.findOne({name: ofFaculty["nameOfFaculty" + x] }, arr);
+            });
 
+        }
+    }
 };
 
 

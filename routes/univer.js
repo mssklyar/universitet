@@ -31,32 +31,17 @@ router.post('/', function(req, res, next) {
     if (!req.body) {
         res.sendStatus(400);                                                    //Если нет ланных с формы, то нихуя и статус 400
     } else {
-        /*var counter = 0;
-        for (var key in req.body) {counter++;}*/
-
         Univer.findDupUniver(req.body["nameOfUniver"], function (err, result) {    //Метода проверяет есть ли уже такой универ в бд
             if (err) throw err;
             if (result) {
                 res.send("Универ уже есть такой!");
             } else {
-                Faculty.findDupFaculty(req.body, function (err, result) {
+                Faculty.findDupFacultyAndSaveAndGetId(req.body, Univer.schema.requiredPaths().length, function (err, result) {
                     if (err) throw err;
                     if (result) {
                         res.send("Факультет такой есть уже!");
                     }else{
-
-                        var counter = 0;
-                        for (var key in req.body) {counter++;}
-
-                        for (var x = 1; x <= ((counter - Univer.schema.requiredPaths().length)/Faculty.schema.requiredPaths().length) ; x++) {
-                            new Faculty({
-                                name: req.body["nameOfFaculty"+toString(x)],
-                                fuck: req.body["fuckOfFaculty"+toString(x)]
-                            }).save(function (err) {
-                                if (err) throw err;
-                            });
-                        }
-                        res.send("GOOD!" +(counter - Univer.schema.requiredPaths().length)/Faculty.schema.requiredPaths().length );
+                        res.send("fefefe");
                     }
                 });
 
