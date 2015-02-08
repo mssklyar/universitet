@@ -2,4 +2,10 @@ extends layout/layout
 
 block content
   h1= title
-  p Привет, #{userId}
+  -if (user){
+    p Привет, #{user.get('username')}
+    a(href="" onclick="$('<form method=POST action=/logout>').submit();return false") Выйти
+  -} else {
+    p Привет
+  -}
+

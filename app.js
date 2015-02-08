@@ -35,8 +35,8 @@ app.use(session({ //Сессичные
 }));
 app.use(express.static(path.join(__dirname, 'public'))); //Статика
 
-//app.use(require('middleware/loadUser'));
 app.use(require('middleware/sendHttpError'));
+require('middleware/loadUser')(app);
 require('routes')(app);
 require('middleware/errorHandler')(app);
 
