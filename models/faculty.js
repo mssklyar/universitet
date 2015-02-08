@@ -21,26 +21,23 @@ var schema = new Schema({
 
 });
 
-schema.statics.findDupFacultyAndSaveAndGetId = function(ofFaculty, un, data) {
+schema.statics.findDupFacultyAndSave = function(ofFaculty, un) {
     var counter = 0;
-    var gor;
+    var data = null;
     for (var key in ofFaculty) {counter++;}
-    for(var x = 1; x <= ((counter - un)/this.schema.requiredPaths().length) ; x++){
-        data = null;
+    for(var x = 1; x <= ((counter - un)/this.schema.requiredPaths().length) ; x++) {
+        //data = null;
         console.log(ofFaculty["nameOfFaculty" + x]);
-        this.findOne({name: ofFaculty["nameOfFaculty" + x] }, data);
-        if(data){
-            console.log(data);
-            break;
-        }else{
-            console.log(data);
+        this.findOne({name: ofFaculty["nameOfFaculty1"].toUpperCase()}, data);
+        console.log(data);
+        if (!data) {
             new this({
-                name: ofFaculty["nameOfFaculty"+x],
-                fuck: ofFaculty["fuckOfFaculty"+x]
+                name: ofFaculty["nameOfFaculty" + x].toUpperCase(),
+                fuck: ofFaculty["fuckOfFaculty" + x].toUpperCase()
             }).save(function (err) {
-                if (err) throw err;
-                //this.findOne({name: ofFaculty["nameOfFaculty" + x] }, arr);
-            });
+                    if (err) throw err;
+                    counter = 5;
+                });
 
         }
     }

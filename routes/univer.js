@@ -34,15 +34,14 @@ router.post('/', function(req, res, next) {
         Univer.findDupUniver(req.body["nameOfUniver"], function (err, result) {    //Метода проверяет есть ли уже такой универ в бд
             if (err) throw err;
             if (result) {
-                res.send("Универ уже есть такой!");
+                res.send("Уже универ есть такой!");
             } else {
-                Faculty.findDupFacultyAndSaveAndGetId(req.body, Univer.schema.requiredPaths().length, function (err, result) {
+                Faculty.findDupFacultyAndSave(req.body, Univer.schema.requiredPaths().length, function (err) {
                     if (err) throw err;
-                    if (result) {
-                        res.send("Факультет такой есть уже!");
-                    }else{
-                        res.send("fefefe");
-                    }
+                    Univer.saveUniver(req.body, function(err){
+                        if (err) throw err;
+                        res.send("GOOD!");
+                    });
                 });
 
 

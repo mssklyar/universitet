@@ -12,7 +12,9 @@ var schema = new Schema({
         type: Date,
         default: Date.now
     },
-    faculties: [{ type: Schema.Types.ObjectId, ref: 'faculty' }]
+    faculties: {
+        type: Array
+    }
 });
 
 schema.statics.findUniver = function(data) {
@@ -23,10 +25,23 @@ schema.statics.findDupUniver = function(nameOfUniver, data) {
     this.findOne({name: nameOfUniver.toUpperCase()}, data);
 };
 
-/*
-schema.statics.schemaToArray = function() {
-   return this.requiredPaths;
+schema.statics.saveUniver = function(ofData) {
+    var counter = 0;
+    var data = null;
+    var arr = new Array();
+    console.log("Я тут!");
+    for (var key in ofData) {counter++;}
+    for(var x = 1; x <= ((counter - this.schema.requiredPaths().length)/faculty.schema.requiredPaths().length) ; x++) {
+        this.findOne({name: ofData["nameOfFaculty1"]}, data);
+        console.log(data);
+        arr[x] = data._id;
+    }
+    new Univer({
+        name: ofData["nameOfUniver"].toUpperCase(),
+        faculties: arr
+    }).save(function (err) {
+        if (err) throw err;
+    });
 };
-*/
 
 exports.Univer = mongoose.model('Univer', schema);
