@@ -13,7 +13,6 @@ block content
             .form-group
                 .col-lg-offset-2.col-lg-10
                     button.btn.btn-primary(type='submit', data-loading-text='Отправляется') Войти
-                    span.help-block.error
         script.
             $(document.forms['login-form']).on('submit', function() {
                 var form = $(this);
@@ -28,7 +27,7 @@ block content
                     },
                     statusCode: {
                         200: function() {
-                            form.html("Вы вошли в сайт").addClass('alert-success');
+                            $('Вы вошли в сайт', form).html(message);
                                 window.location.href = "/";
                             },
                         403: function(jqXHR) {

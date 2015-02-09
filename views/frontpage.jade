@@ -1,11 +1,95 @@
 extends layout/layout
 
 block content
-  h1= title
-  -if (user){
-    p Привет, #{user.get('username')}
-    a(href="" onclick="$('<form method=POST action=/logout>').submit();return false") Выйти
-  -} else {
-    p Привет
-  -}
-
+    .site-wrapper
+        .site-wrapper-inner
+            .container.main-container.radius
+                .row
+                    .col-md-3
+                        img.avatar(src="img/def-avatar.png")
+                    .col-md-9.text-center
+                        h1 Вася Пупкин
+                        h4 НЮИ (ф) ТГУ
+                        -if (user){
+                          p Привет, #{user.get('username')}
+                          a(href="" onclick="$('<form method=POST action=/logout>').submit();return false") Выйти
+                        -} else {
+                          p Привет
+                        -}
+            .container.nav-container.radius
+                ul.nav.nav-pills.nav-justified.menu(role="navigation")
+                    li
+                        a(href="#")Добавить файл
+                    li.active
+                        a(href="#")Поиск
+                    li
+                        a(href="#")Настройки
+            .container.lenta-container
+                .input-group.poisk
+                    input.form-control.input-lg(type="text")
+                    span.input-group-btn
+                        button.btn.btn-default.btn-lg(type="button")Искать!
+                .container.block-container
+                    .row
+                        .col-md-3
+                            img.file-pic(src="img/def-avatar.png")
+                        .col-md-9
+                            h3 Ответы по уголовному праву
+                            a(href="#")
+                                span.label.label-default.label-subject НГТУ
+                            a(href="#")
+                                span.label.label-default.label-subject Юридический
+                            a(href="#")
+                                span.label.label-default.label-subject Уголовное право
+                            a(href="#")
+                                span.label.label-default.label-subject Ответы
+                            br
+                            h6 Вася Пупкин
+                .container.block-container
+                    .row
+                        .col-md-3
+                            img.file-pic(src="img/def-avatar.png")
+                        .col-md-9
+                            h3 Ответы по уголовному праву
+                            a(href="#")
+                                span.label.label-default.label-subject НГТУ
+                            a(href="#")
+                                span.label.label-default.label-subject Юридический
+                            a(href="#")
+                                span.label.label-default.label-subject Уголовное право
+                            a(href="#")
+                                span.label.label-default.label-subject Ответы
+                            br
+                            h6 Вася Пупкин
+                .container.block-container
+                    .row
+                        .col-md-3
+                            img.file-pic(src="img/def-avatar.png")
+                        .col-md-9
+                            h3 Ответы по уголовному праву
+                            a(href="#")
+                                span.label.label-default.label-subject НГТУ
+                            a(href="#")
+                                span.label.label-default.label-subject Юридический
+                            a(href="#")
+                                span.label.label-default.label-subject Уголовное право
+                            a(href="#")
+                                span.label.label-default.label-subject Ответы
+                            br
+                            h6 Вася Пупкин
+                .container.block-container
+                    .row
+                        .col-md-3
+                            img.file-pic(src="img/def-avatar.png")
+                        .col-md-9
+                            h3 Ответы по уголовному праву
+                            a(href="#")
+                                span.label.label-default.label-subject НГТУ
+                            a(href="#")
+                                span.label.label-default.label-subject Юридический
+                            a(href="#")
+                                span.label.label-default.label-subject Уголовное право
+                            a(href="#")
+                                span.label.label-default.label-subject Ответы
+                            br
+                            h6 Вася Пупкин
