@@ -32,11 +32,11 @@ schema.statics.saveUniver = function(ofData) {
     console.log("Я тут!");
     for (var key in ofData) {counter++;}
     for(var x = 1; x <= ((counter - this.schema.requiredPaths().length)/faculty.schema.requiredPaths().length) ; x++) {
-        this.findOne({name: ofData["nameOfFaculty1"]}, data);
+        faculty.findOne({name: ofData["nameOfFaculty" + x]}, data);
         console.log(data);
         arr[x] = data._id;
     }
-    new Univer({
+    new this({
         name: ofData["nameOfUniver"].toUpperCase(),
         faculties: arr
     }).save(function (err) {

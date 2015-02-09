@@ -28,7 +28,7 @@ schema.statics.findDupFacultyAndSave = function(ofFaculty, un) {
     for(var x = 1; x <= ((counter - un)/this.schema.requiredPaths().length) ; x++) {
         //data = null;
         console.log(ofFaculty["nameOfFaculty" + x]);
-        this.findOne({name: ofFaculty["nameOfFaculty1"].toUpperCase()}, data);
+        this.findOne({name: ofFaculty["nameOfFaculty" + x].toUpperCase()}, data);
         console.log(data);
         if (!data) {
             new this({
