@@ -36,12 +36,13 @@ router.post('/', function(req, res, next) {
             if (result) {
                 res.send("Уже универ есть такой!");
             } else {
-                Faculty.findDupFacultyAndSave(req.body, Univer.schema.requiredPaths().length, function (err) {
+                //req.body, Univer.schema.requiredPaths().length,
+                Faculty.findDupFacultyAndSave(function (err, result) {
                     if (err) throw err;
-                    Univer.saveUniver(req.body, function(err){
-                        if (err) throw err;
-                        res.send("GOOD!");
-                    });
+                   /* Univer.saveUniver(req.body, function(err){
+                        if (err) throw err;*/
+                        res.send("GOOD!" + result);
+                    //});
                 });
 
 
