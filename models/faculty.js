@@ -21,29 +21,29 @@ var schema = new Schema({
 
 });
 
-schema.statics.findDupFacultyAndSave = function(dat) {
-   /* var counter = 0;
-    var data;
+schema.statics.findDupFaculty = function(ofFaculty, un) {
+    var counter = 0;
+
     for (var key in ofFaculty) {counter++;}
     for(var x = 1; x <= ((counter - un)/this.schema.requiredPaths().length) ; x++) {
         //data = null;
-        console.log(ofFaculty["nameOfFaculty" + x]);*/
-    this.findOne({name: "REGERG"}, function(err, callback){
-        if(err) throw err;
-       callback(data.name);
-    });
+        console.log(ofFaculty["nameOfFaculty" + x]);
+        this.findOne({name: ofFaculty["nameOfFaculty" + x].toUpperCase()}, function(err, data){
+            if(err) throw err;
+            if (!data) {
+                console.log(x);
+                new this({
+                    name: ofFaculty["nameOfFaculty" + x].toUpperCase(),
+                    fuck: ofFaculty["fuckOfFaculty" + x].toUpperCase()
+                }).save(function (err) {
+                        if (err) throw err;
+                    });
 
-       /* if (!data) {
-            new this({
-                name: ofFaculty["nameOfFaculty" + x].toUpperCase(),
-                fuck: ofFaculty["fuckOfFaculty" + x].toUpperCase()
-            }).save(function (err) {
-                    if (err) throw err;
-                    counter = 5;
-                });
+            }
+        });
 
-        }
-    }*/
+
+    }
 };
 
 
