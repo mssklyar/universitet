@@ -3,6 +3,7 @@ var router = express.Router();
 var Univer = require('models/univer').Univer;
 var Faculty = require('models/faculty').Faculty;
 var bodyParser = require('body-parser');
+var async = require('async');
 
 router.get('/', function(req, res, next) {
     Univer.findUniver(function(err, result) {
@@ -31,70 +32,39 @@ router.post('/', function(req, res, next) {
     if (!req.body) {
         res.sendStatus(400);                                                    //Если нет ланных с формы, то нихуя и статус 400
     } else {
-        var counter = 0;
-        var x;
+
         var arr = new Array();
         var fId = new Array();
+
+        var univ = {name: req.body["nameOfUniver"].toUpperCase()};
+
+        var counter = 0;
         for (var key in req.body) {counter++;}
         var len = ((counter - Univer.schema.requiredPaths().length)/Faculty.schema.requiredPaths().length);
-        arr[0] = {name: req.body["nameOfUniver"].toUpperCase()};
-        for (x = 1 ; x <= len ; x++){
-            arr[x] = {
+
+        for (var x = 1 ; x <= len ; x++){
+            arr[x-1] = {
                 "name": req.body["nameOfFaculty" + x].toUpperCase(),
                 "fuck": req.body["fuckOfFaculty" + x].toUpperCase()
             };
         };
-
-        console.log(arr[1]["name"]);
-        Univer.findOne({name: arr[0]}, function(err, data){
-            if (err) throw err;
-            if (data){
-                res.send("Есть универ такой!");
-            }else{
-                console.log(len);
-                for (x = 1 ; x <= len ; x++) {
-                    console.log(arr[x]);
-                    Faculty.findOne({name: arr[x]["name"]}, function (err, data) {
-                        if (err) throw err;
-                        if(!data){
-                            console.log(len);
-                            console.log(arr[1]);
-                            new Faculty(arr[x]).save(function(err){
-                                if(err) throw err;
-                                Faculty.findOne({name: arr[x]["name"]}, function(err, data){
-                                    //fId[x] = data._id;
-
-                                })
-                            });
-                        }else{console.log(data)}
-                    });
+        async.waterfall([
+            function(callback){
+                Univer.findOne({name: univ["name"]}, callback);
+            },
+            function(univer, callback){
+                if (univer) {
+                    res.send("Есть универ такой!");
+                    callback;
+                } else {
+                    async.each(arr, function(fac, callback){
+                        Faculty.findOne({name: fac["name"]}, function(err, data){
+                            callback('хуй');
+                        })
+                    }, callback);
                 }
-                res.send(fId);
-
             }
-        });
-       /* Univer.findDupUniver(req.body["nameOfUniver"], function (err, result) {    //Метода проверяет есть ли уже такой универ в бд
-            if (err) throw err;
-            if (result) {
-                res.send("Уже универ есть такой!");
-            } else {
-                //req.body, Univer.schema.requiredPaths().length,
-                Faculty.findDupFaculty(req.body, Univer.schema.requiredPaths().length, function (err, result) {
-                    if (err) throw err;
-                    Univer.saveUniver(req.body, function(err){
-                        if (err) throw err;
-                        res.send("GOOD!" + result);
-                    });
-                });
-
-
-                *//*var go  = new Univer({name: req.body.nameOfUniver.toUpperCase()});
-                go.save(function (err) {
-                    if (err) throw err;*//*
-                    res.send(req.body.nameofUniver + " добавлен!");
-               //});
-            }
-       });*/git
+        ], function(a,b){console.log(a,b)});
     }
 });
 
