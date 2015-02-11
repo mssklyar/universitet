@@ -58,10 +58,42 @@ router.post('/', function(req, res, next) {
                     callback;
                 } else {
                     async.each(arr, function(fac, callback){
-                        Faculty.findOne({name: fac["name"]}, function(err, data){
-                            callback('хуй');
-                        })
-                    }, callback);
+                        console.log(fac);
+                        async.waterfall([
+                            function(callback){
+                                Faculty.findOne({name: fac["name"]}, callback);
+                            },
+                            function(facultet, callback){
+                                if (!facultet) {
+                                    new Faculty(fac).save(callback);
+                                } else {
+                                    callback;
+                                }
+                            },
+                            function(callback){
+                                Faculty.findOne({name: fac["name"]}, callback);
+                            },
+                            function(result, callback){
+                                fId.push(result._id);
+                                callback;
+                            }], callback);
+
+                        }, callback)
+                }
+            },
+            function(callback){
+                Univer.findOne({name: univ["name"]}, callback);
+            },
+            function(univer, callback){
+                console.log(univer);
+                if (univer) {
+                    res.send("Есть универ такой!");
+                    callback;
+                } else {
+
+                    univ["faculties"] = fId;
+                    console.log(univ);
+                    new Univer(univ).save(callback)
                 }
             }
         ], function(a,b){console.log(a,b)});
