@@ -25,6 +25,11 @@ function dropDatabase(callback) {
 
 function requireModels(callback) {
     require('models/user');
+    require('models/city');
+    require('models/univer');
+    require('models/faculty');
+    require('models/subject');
+
 
     async.each(Object.keys(mongoose.models), function(modelName, callback) {
         mongoose.models[modelName].ensureIndexes(callback);
@@ -33,14 +38,57 @@ function requireModels(callback) {
 
 function createUsers(callback) {
 
-    var users = [
-        {username: 'max', password: 'supervasya'},
-        {username: 'lol', password: '123'},
-        {username: 'admin', password: 'thetruehero'}
-    ];
+    var newsubject = {
+        name: 'Уголовное право'
+    };
 
-    async.each(users, function(userData, callback) {
-        var user = new mongoose.models.User(userData);
-        user.save(callback);
-    }, callback);
+    var Subject = new mongoose.models.Subject(newsubject);
+    Subject.save(function(err, data){
+
+        var newfaculty = {
+            name: 'Юридический',
+            subjects: [Subject._id]
+        };
+
+        var Faculty = new mongoose.models.Faculty(newfaculty);
+        Faculty.save(function(err, data){
+
+            var newuniver = {
+                name: 'НЮИ (ф) ТГУ',
+                faculties: [Faculty._id]
+            };
+
+            var Univer = new mongoose.models.Univer(newuniver);
+            Univer.save(function(err, data){
+
+                var newcity = {
+                    name: 'Новосибирск',
+                    univers: [Univer._id]
+                };
+
+                var City = new mongoose.models.City(newcity);
+                City.save(function(err, data){
+
+                    var newuser = {
+                        username: 'max',
+                        password: 'orangetree',
+                        info: {
+                            name: 'Максим',
+                            lastname: 'Скляр',
+                            city: City._id,
+                            univer: Univer._id,
+                            faculty: Faculty._id
+                        }
+                    };
+
+                    var User = new mongoose.models.User(newuser);
+                    User.save(callback);
+                })
+
+            })
+
+        })
+
+    });
+
 }

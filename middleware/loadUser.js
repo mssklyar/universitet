@@ -10,6 +10,7 @@ module.exports = function(app) {
             if (err) return next(err);
 
             req.user = res.locals.user = user;
+
             next();
         });
     })

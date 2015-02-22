@@ -8,40 +8,43 @@ var schema = new Schema({
         unique: true,
         required: true
     },
-    created: {
-        type: Date,
-        default: Date.now
-    },
-    faculties: {
-        type: Array
-    }
+    faculties: [{ type: Schema.Types.ObjectId, ref: 'faculty' }]
 });
 
-schema.statics.findUniver = function(data) {
-    this.find({}, data);
-};
-
-schema.statics.findDupUniver = function(nameOfUniver, data) {
-    this.findOne({name: nameOfUniver.toUpperCase()}, data);
-};
-
-schema.statics.saveUniver = function(ofData) {
-    var counter = 0;
-    var data = null;
-    var arr = new Array();
-    console.log("Я тут!");
-    for (var key in ofData) {counter++;}
-    for(var x = 1; x <= ((counter - this.schema.requiredPaths().length)/faculty.schema.requiredPaths().length) ; x++) {
-        faculty.findOne({name: ofData["nameOfFaculty" + x]}, data);
-        console.log(data);
-        arr[x] = data._id;
-    }
-    new this({
-        name: ofData["nameOfUniver"].toUpperCase(),
-        faculties: arr
-    }).save(function (err) {
-        if (err) throw err;
-    });
-};
-
 exports.Univer = mongoose.model('Univer', schema);
+
+//********************************************************************************
+/*var mongoose = require('mongoose')
+    , Schema = mongoose.Schema
+
+var personSchema = Schema({
+    _id     : Number,
+    name    : String,
+    age     : Number,
+    stories : [{ type: Schema.Types.ObjectId, ref: 'Story' }]
+});
+
+var storySchema = Schema({
+    _creator : { type: Number, ref: 'Person' },
+    title    : String,
+    fans     : [{ type: Number, ref: 'Person' }]
+});
+
+var Story  = mongoose.model('Story', storySchema);
+var Person = mongoose.model('Person', personSchema);
+
+var aaron = new Person({ _id: 0, name: 'Aaron', age: 100 });
+
+aaron.save(function (err) {
+    if (err) return handleError(err);
+
+    var story1 = new Story({
+        title: "Once upon a timex.",
+        _creator: aaron._id    // assign the _id from the person
+    });
+
+    story1.save(function (err) {
+        if (err) return handleError(err);
+        // thats it!
+    });
+})*/

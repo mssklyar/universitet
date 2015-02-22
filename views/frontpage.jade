@@ -3,93 +3,137 @@ extends layout/layout
 block content
     .site-wrapper
         .site-wrapper-inner
-            .container.main-container.radius
-                .row
+            .navbar.navbar-default.navbar-fixed-top(role="navigation")
+                .container
+                    .navbar-header
+                        button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-collapse")
+                            span.sr-only Toggle navigation
+                            span.icon-bar
+                            span.icon-bar
+                            span.icon-bar
+                        a.navbar-brand(href="#") Подполье.ру
+                    .collapse.navbar-collapse
+                        ul.nav.navbar-nav
+                            li.active
+                                a(href="#") Файлотека
+                            li
+                                a(href="#contact") Contact
+                            li.dropdown
+                                a.dropdown-toggle(href="#" data-toggle="dropdown")
+                                    Dropdown
+                                    b.caret
+                                ul.dropdown-menu
+                                    li
+                                        a(href="#") Action
+                                    li
+                                        a(href="#") Another action
+                                    li
+                                        a(href="#") Something else here
+                                    li.divider
+                                    li.dropdown-header Nav header
+                                    li
+                                        a(href="#") Separated link
+                                    li
+                                        a(href="#") One more separated link
+        .nav-collapse
+            .container.main-container
+                .row.main-container-row
                     .col-md-3
-                        img.avatar(src="img/def-avatar.png")
-                    .col-md-9.text-center
-                        h1 Вася Пупкин
-                        h4 НЮИ (ф) ТГУ
-                        -if (user){
-                          p Привет, #{user.get('username')}
-                          a(href="" onclick="$('<form method=POST action=/logout>').submit();return false") Выйти
-                        -} else {
-                          p Привет
-                        -}
-            .container.nav-container.radius
-                ul.nav.nav-pills.nav-justified.menu(role="navigation")
+                        img.avatar(src="img/def-avatar-2.jpg").img-circle
+                    .col-md-4.main-container-box
+                        p.hh1 #{user.info.name} #{user.info.lastname}
+                        p #{user.info.univer}
+                        p #{user.info.faculty}
+                    .col-md-2.main-container-box.text-center
+                        .circle
+                            p.hh1.text 43
+                            p.minitext Загружено
+                    .col-md-2.main-container-box.text-center
+                        .circle
+                            p.hh1.text 17
+                            p.minitext Спасибо
+            .container.nav-container
+                ul.nav.masthead-nav(role="navigation")
                     li
                         a(href="#")Добавить файл
                     li.active
                         a(href="#")Поиск
                     li
-                        a(href="#")Настройки
+                        a(href="#")Новое
+                    li
+                        a(href="#")Избранное
             .container.lenta-container
                 .input-group.poisk
-                    input.form-control.input-lg(type="text")
+                    input.form-control(type="text")
                     span.input-group-btn
-                        button.btn.btn-default.btn-lg(type="button")Искать!
-                .container.block-container
-                    .row
-                        .col-md-3
-                            img.file-pic(src="img/def-avatar.png")
-                        .col-md-9
-                            h3 Ответы по уголовному праву
-                            a(href="#")
-                                span.label.label-default.label-subject НГТУ
-                            a(href="#")
-                                span.label.label-default.label-subject Юридический
-                            a(href="#")
-                                span.label.label-default.label-subject Уголовное право
-                            a(href="#")
-                                span.label.label-default.label-subject Ответы
-                            br
-                            h6 Вася Пупкин
-                .container.block-container
-                    .row
-                        .col-md-3
-                            img.file-pic(src="img/def-avatar.png")
-                        .col-md-9
-                            h3 Ответы по уголовному праву
-                            a(href="#")
-                                span.label.label-default.label-subject НГТУ
-                            a(href="#")
-                                span.label.label-default.label-subject Юридический
-                            a(href="#")
-                                span.label.label-default.label-subject Уголовное право
-                            a(href="#")
-                                span.label.label-default.label-subject Ответы
-                            br
-                            h6 Вася Пупкин
-                .container.block-container
-                    .row
-                        .col-md-3
-                            img.file-pic(src="img/def-avatar.png")
-                        .col-md-9
-                            h3 Ответы по уголовному праву
-                            a(href="#")
-                                span.label.label-default.label-subject НГТУ
-                            a(href="#")
-                                span.label.label-default.label-subject Юридический
-                            a(href="#")
-                                span.label.label-default.label-subject Уголовное право
-                            a(href="#")
-                                span.label.label-default.label-subject Ответы
-                            br
-                            h6 Вася Пупкин
-                .container.block-container
-                    .row
-                        .col-md-3
-                            img.file-pic(src="img/def-avatar.png")
-                        .col-md-9
-                            h3 Ответы по уголовному праву
-                            a(href="#")
-                                span.label.label-default.label-subject НГТУ
-                            a(href="#")
-                                span.label.label-default.label-subject Юридический
-                            a(href="#")
-                                span.label.label-default.label-subject Уголовное право
-                            a(href="#")
-                                span.label.label-default.label-subject Ответы
-                            br
-                            h6 Вася Пупкин
+                        button.btn.btn-default(type="button")Искать!
+                .row
+                    .col-md-4
+                        p Город
+                        select.form-control.input-sm
+                            option Новосибирск
+                            option Томск
+                        br
+                        p Университет
+                        select.form-control.input-sm
+                            option НЮИ (ф) ТГУ
+                            option НГТУ
+                        br
+                        p Факультет
+                        select.form-control.input-sm
+                            option Юридический
+                    .col-md-8
+                        .container.block-container
+                            .row
+                                .col-md-3
+                                    img.file-pic(src="img/def-avatar.png").img-circle
+                                .col-md-9
+                                    p НЮИ (ф) ТГУ
+                                    p Юридический
+                                    p Ответы по уголовному праву
+                                    P Вася Пупкин
+                        .container.block-container
+                            .row
+                                .col-md-3
+                                    img.file-pic(src="img/def-avatar.png").img-circle
+                                .col-md-9
+                                    p НЮИ (ф) ТГУ
+                                    p Юридический
+                                    p Ответы по уголовному праву
+                                    P Вася Пупкин
+                        .container.block-container
+                            .row
+                                .col-md-3
+                                    img.file-pic(src="img/def-avatar.png").img-circle
+                                .col-md-9
+                                    p НЮИ (ф) ТГУ
+                                    p Юридический
+                                    p Ответы по уголовному праву
+                                    P Вася Пупкин
+                        .container.block-container
+                            .row
+                                .col-md-3
+                                    img.file-pic(src="img/def-avatar.png").img-circle
+                                .col-md-9
+                                    p НЮИ (ф) ТГУ
+                                    p Юридический
+                                    p Ответы по уголовному праву
+                                    P Вася Пупкин
+                        .container.block-container
+                            .row
+                                .col-md-3
+                                    img.file-pic(src="img/def-avatar.png").img-circle
+                                .col-md-9
+                                    p НЮИ (ф) ТГУ
+                                    p Юридический
+                                    p Ответы по уголовному праву
+                                    P Вася Пупкин
+                        .container.block-container
+                            .row
+                                .col-md-3
+                                    img.file-pic(src="img/def-avatar.png").img-circle
+                                .col-md-9
+                                    p НЮИ (ф) ТГУ
+                                    p Юридический
+                                    p Ответы по уголовному праву
+                                    P Вася Пупкин

@@ -5,7 +5,6 @@ var subject = require('models/subject').Subject;
 var schema = new Schema({
     name: {
         type: String,
-        unique: true,
         required: true
     },
     fuck: {

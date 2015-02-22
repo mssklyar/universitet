@@ -2,8 +2,26 @@ var crypto = require('crypto');
 var async = require('async');
 var util = require('util');
 
+var faculty = require('models/faculty').Faculty;
+var univer = require('models/univer').Univer;
+var city = require('models/city').City;
+
 var mongoose = require('libs/mongoose'),
     Schema = mongoose.Schema;
+
+/**
+ * Юзер
+ * |-username
+ * |-hashedPassword
+ * |-salt
+ * |-created
+ * |-info
+ *   |-name
+ *   |-lastname
+ *   |-city -> id of city
+ *   |-univer -> id of univer
+ *   |-faculty -> id of faculty
+ */
 
 var schema = new Schema({
     username: {
@@ -22,6 +40,28 @@ var schema = new Schema({
     created: {
         type: Date,
         default: Date.now
+    },
+    info: {
+        name: {
+            type: String,
+            required: true
+        },
+        lastname: {
+            type: String,
+            required: true
+        },
+        city: {
+            type: Schema.Types.ObjectId,
+            ref: 'city'
+        },
+        univer: {
+            type: Schema.Types.ObjectId,
+            ref: 'univer'
+        },
+        faculty: {
+            type: Schema.Types.ObjectId,
+            ref: 'faculty'
+        }
     }
 });
 

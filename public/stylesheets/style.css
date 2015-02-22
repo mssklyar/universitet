@@ -1,22 +1,115 @@
-.radius {
-    border-radius: 21px;
+/* цвет фона и рамки навигационного меню */
+.navbar-default {
+    background-color: #357bb7;
+    border-color: #357bb7;
+    width: 720px;
+    margin-right: auto;
+    margin-left: auto;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+
+}
+/* цвет текста, содержащий название сайта или бренда */
+.navbar-default .navbar-brand {
+    color: #ffffff;
+}
+/* цвет текста (название сайта или бренда), при поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #ffffff;
+}
+/* Цвет пунктов навигационного меню */
+.navbar-default .navbar-nav > li > a {
+    color: #ecf0f1;
+}
+/* Цвет пункта меню, при поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #d7eaff;
+}
+/* Цвет и фон активного пункта меню, а также поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #d0deff;
+    background-color: #357bb7;
+}
+/* Цвет и фон открытого пункта меню, а также поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #dde7ff;
+    background-color: #357bb7;
+}
+/* Цвет стрелочки (треугольничка) у раскрывающихся пунктов меню */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #ecf0f1;
+    border-bottom-color: #ecf0f1;
+}
+/* Цвет стрелочки (треугольничка) при поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #d1ffed;
+    border-bottom-color: #d1ffed;
+}
+/* Цвет стрелочки (треугольничка), открывшегося пункта меню */
+.navbar-default .navbar-nav > .open > a .caret,
+.navbar-default .navbar-nav > .open > a:hover .caret,
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: #d1ffed;
+    border-bottom-color: #d1ffed;
+}
+/* CSS стили для мобильных устройств */
+/* Цвет рамки у кнопки, которая открывает меню */
+.navbar-default .navbar-toggle {
+    border-color: #27ae60;
+}
+/* Цвет фона кнопки (которая открывает меню) при поднесении к ней курсора мышки или при нахождении её в фокусе */
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #27ae60;
+}
+/* Цвет полосочек в кнопочке, которая открывает меню */
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ecf0f1;
+}
+/* Цвет пунктов меню в раскрывающихся списках */
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #ecf0f1;
+    }
+    /* Цвет и фон пункта меню в раскрывающихся списках, при поднесении к нему курсора мышки или при нахождении его в фокусе */
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #d1ffed;
+        background-color: #27ae60;
+    }
 }
 
+/*Закругленные уголки*/
+.radius {
+    border-radius: 12px;
+}
+
+/*Стиль всей страницы*/
 body {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-    background-color: rgba(0, 0, 0, 0.86);
+    background-color: rgba(242, 245, 247, 0.86);
     height: 100%;
+    padding-top: 60px;
 }
 
+/*Цвет ссылки*/
 a {
   color: #00B7FF;
 }
 
+
 .site-wrapper{
     display: table;
     width: 100%;
-    -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
-    box-shadow: inset 0 0 200px rgba(0,0,0,.8);
+    /*-webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);*/
+   /* box-shadow: inset 0 0 200px rgba(0,0,0,.8);*/
     min-height: 100%;
     min-height: 100vh;
     align-items: center;
@@ -44,28 +137,99 @@ a {
 }
 
 .main-container {
-    padding-bottom: 0px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 0px;
+    /*padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;*/
+    padding-top: 20px;
     background-color: rgb(255, 255, 255);
     width: 700px;
-    margin-bottom: 10px;
+    /*margin-bottom: 10px;*/
+    /*box-shadow: 0.1em 0.1em 5px rgba(122,122,122,0.1);*/
+    border: 1px solid rgba(122,122,122,0.2);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 }
 
 .avatar {
-    height: auto;
-    width: 150px;
+    height: 120px;
+    width: 120px;
+    margin: 20px;
+    margin-top: 0;
 }
+
+.hh1{
+    font-size: 29px;
+}
+
+.main-container-box{
+    margin-top: 20px;
+}
+
+.circle {
+    margin:0px 0px;
+    width:6em;
+    height:6em;
+    border: #265f9d solid 0.2em;
+    -moz-border-radius:5em;
+    -webkit-border-radius:5em;
+    border-radius:5em;
+}
+
+.circle > p {
+    color: #265f9d;
+}
+
+.text{
+    padding-top: 15px;
+    margin-bottom: -3px;
+}
+
+.minitext{
+    font-size: 13px;
+}
+
 .nav-container {
+    border: 1px solid rgba(122,122,122,0.2);
+    border-top: 0px;
+    border-bottom: 2px solid rgba(122,122,122,0.2);
     width: 700px;
     margin-bottom: 10px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.masthead-nav{
+    text-align: center;
+}
+
+.masthead-nav > li + li {
+    margin-left: 40px;
+}
+
+.masthead-nav > li {
+    display: inline-block;
+}
+
+.masthead-nav > li > a {
+    font-size: 16px;
+    color: #000000;
+    border-bottom: 2px solid transparent;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.masthead-nav > .active > a, .masthead-nav > .active > a:hover, .masthead-nav > .active > a:focus {
+    color: #000000;
+    border-bottom-color: #265f9d;
 }
 
 .lenta-container{
     padding-bottom: 15px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
     padding-top: 15px;
     width: 670px;
     background-color: rgb(255, 255, 255);
@@ -77,18 +241,18 @@ a {
 }
 .block-container{
     background-color: rgba(0, 0, 0, 0.12);
-    width: 500px;
+    width: 400px;
     border-radius: 5px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 20px;
+    padding-top: 10px;
     margin-bottom:15px;
 }
 
 .file-pic{
     height: auto;
-    width: 100px;
+    width: 80px;
 }
 
 .label-subject{
