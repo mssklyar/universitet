@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c96a14e-7f7e-4372-b47f-b809bde411ef" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="my-app.iws" />
@@ -37,20 +37,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="986">
-              <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.4678899" vertical-offset="340" max-vertical-offset="901">
+              <caret line="35" column="66" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2947977" vertical-offset="0" max-vertical-offset="629">
+            <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="629">
               <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
               <folding />
             </state>
@@ -70,7 +70,7 @@
       <file leaf-file-name="config.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/config.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="459">
+            <state vertical-scroll-proportion="-13.730769" vertical-offset="0" max-vertical-offset="459">
               <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
               <folding />
             </state>
@@ -191,9 +191,9 @@
         <option value="$PROJECT_DIR$/middleware/loadUser.js" />
         <option value="$PROJECT_DIR$/routes/main.js" />
         <option value="$PROJECT_DIR$/routes/frontpage.js" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
   </component>
@@ -561,7 +561,11 @@
       <created>1424688036581</created>
       <updated>1424688036581</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Изменения для heroku 4">
+      <created>1424688338739</created>
+      <updated>1424688338739</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -624,8 +628,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="New ignor, suka 3" />
-    <MESSAGE value="New ignor, suka 4" />
     <MESSAGE value="Подключение модуля сессий. &#10;Изменение настроек сессии. &#10;Поддержка сессий." />
     <MESSAGE value="Комменты в главном файле" />
     <MESSAGE value="Связи между моделями" />
@@ -649,7 +651,9 @@
     <MESSAGE value="Изменения для heroku" />
     <MESSAGE value="Изменения для heroku 2" />
     <MESSAGE value="Изменения для heroku 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Изменения для heroku 3" />
+    <MESSAGE value="Изменения для heroku 4" />
+    <MESSAGE value="Изменения для heroku 5" />
+    <option name="LAST_COMMIT_MESSAGE" value="Изменения для heroku 5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -805,6 +809,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="2125">
           <caret line="44" column="12" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -896,6 +901,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.83441556" vertical-offset="319" max-vertical-offset="935">
           <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -903,6 +909,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16558442" vertical-offset="0" max-vertical-offset="616">
           <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -910,6 +917,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35876623" vertical-offset="1020" max-vertical-offset="1683">
           <caret line="73" column="45" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -917,6 +925,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33116883" vertical-offset="0" max-vertical-offset="616">
           <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -996,22 +1005,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="459">
-          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="154" max-vertical-offset="986">
-          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="545">
@@ -1022,8 +1015,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2947977" vertical-offset="0" max-vertical-offset="629">
+        <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="629">
           <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.730769" vertical-offset="0" max-vertical-offset="459">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4678899" vertical-offset="340" max-vertical-offset="901">
+          <caret line="35" column="66" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
           <folding />
         </state>
       </provider>
