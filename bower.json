@@ -1,0 +1,22 @@
+{
+  "name": "podpolie",
+  "version": "0.0.2",
+  "homepage": "https://github.com/mssklyar/universitet",
+  "authors": [
+    "Max <ravonta@yandex.ru>"
+  ],
+  "directory": "public/vendor",
+  "main": "public/vendor",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+      "jquery": "*",
+      "bootstrap": "*"
+  }
+}
